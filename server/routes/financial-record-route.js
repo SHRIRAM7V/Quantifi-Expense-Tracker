@@ -9,7 +9,7 @@ router.get("/getallbyuserid/:userId", async (req, res) => {
     const records = await FinancialRecordModel.find({ userId: userId });
     console.log("Records for User ID:", userId, records);
     if (records.length == 0) {
-      return res.status(404).send("No records found for the user.");
+      return res.status(200).send([]);
     }
 
     res.status(200).send(records);
@@ -37,10 +37,16 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
+    console.log("Updating Record ID:", id);
+    console.log("New Record Body:", req.body);
     const newrecordbody = req.body;
-    const record = FinancialRecordModel.findByIdAndUpdate(id, newrecordbody, {
-      new: true,
-    });
+    const record = await FinancialRecordModel.findByIdAndUpdate(
+      id,
+      newrecordbody,
+      {
+        new: true,
+      }
+    );
 
     if (!record) {
       return res.status(404).send();
