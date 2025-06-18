@@ -1,7 +1,7 @@
 // FinancialRecordList.js
 import { useState } from "react";
 import { useFinancialRecordContext } from "../../context/financial-record-context";
-
+import "./recordlist.css"; // Assuming you have a CSS file for styling
 const FinancialRecordList = () => {
   const { records, updateRecord, deleteRecord } = useFinancialRecordContext();
   const [editIndex, setEditIndex] = useState(null);
@@ -92,8 +92,8 @@ const FinancialRecordList = () => {
                   </>
                 ) : (
                   <>
-                    <button onClick={() => handleEdit(index)}>Edit</button>
-                    <button
+                    <button  className="editbutton"onClick={() => handleEdit(index)}>Edit</button>
+                    <button className="delbutton"
                       onClick={() => deleteRecord(record._id?.toString() ?? "")}
                     >
                       Delete

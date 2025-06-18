@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useFinancialRecordContext } from "../../context/financial-record-context";
 import { useUser } from "@clerk/clerk-react";
-
+import "./form.css"; // Assuming you have a CSS file for styling
 const FinancialRecordForm = () => {
   const { addRecord } = useFinancialRecordContext();
   const [description, setDescription] = useState("");
@@ -60,7 +60,7 @@ const FinancialRecordForm = () => {
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           >
-            <option value="">Select a Category</option>
+            <option value="" disabled>Select a Category</option>
             <option value="Food">Food</option>
             <option value="Rent">Rent</option>
             <option value="Salary">Salary</option>
@@ -80,15 +80,16 @@ const FinancialRecordForm = () => {
             value={paymentMethod}
             onChange={(e) => setPaymentMethod(e.target.value)}
           >
-            <option value="">Select a Payment Method</option>
+            <option value="" disabled>Select a Payment Method</option>
             <option value="Credit Card">Credit Card</option>
             <option value="Cash">Cash</option>
             <option value="Bank Transfer">Bank Transfer</option>
           </select>
-
+          <div>
           <button type="submit" className="submit-button">
             Add Record
           </button>
+          </div>
         </div>
       </form>
     </div>

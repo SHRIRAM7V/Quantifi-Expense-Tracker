@@ -3,6 +3,7 @@ import { useUser } from "@clerk/clerk-react";
 import FinancialRecordForm from "./financial-record-form";
 import { useFinancialRecordContext } from "../../context/financial-record-context";
 import FinancialRecordList from "./financial-record-list";
+import "./dashboard.css"; // Assuming you have a CSS file for styling
 const Dashboard = () => {
   const { user } = useUser();
 
@@ -23,7 +24,7 @@ const Dashboard = () => {
     <div>
       <h1>Welcome {user?.username}! to Quantifi </h1>
       <FinancialRecordForm />
-      <div>Total Monthly cost: {totalmonthly}</div>
+      <div className="total-cost">Total Monthly cost: {totalmonthly}</div>
       <FinancialRecordList />
     </div>
   );

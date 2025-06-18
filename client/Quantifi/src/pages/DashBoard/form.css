@@ -1,0 +1,22 @@
+.form-field{
+    padding: 5px;
+    margin: 5px;
+    display: flex;
+    gap: 10px;
+    justify-content:center;
+}
+
+
+input{
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+
+select{
+    padding: 5px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+
