@@ -6,8 +6,9 @@ const Dashboard = () => {
   const { user } = useUser();
   return (
     <div>
-      <h1>Welcome {user?.firstName}! to Quantifi </h1>
+      <h1>Welcome {user?.username}! to Quantifi </h1>
       <FinancialRecordForm />
+      <FinancialRecordList />
     </div>
   );
 };
