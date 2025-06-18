@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { useEffect } from "react";
-import { useUser} from "@clerk/clerk-react";
+import { useUser } from "@clerk/clerk-react";
 import { createContext } from "react";
 
 export const FinancialRecordContext = createContext();
@@ -8,25 +8,21 @@ export const FinancialRecordContext = createContext();
 export const FinancialContextProvider = ({ children }) => {
   const [records, setRecords] = useState([]);
   const { user } = useUser();
-  console.log("User in FinancialContextProvider:", user);
+  // console.log("User in FinancialContextProvider:", user);
 
   const FetchFinancialRecords = async () => {
     try {
       if (!user) {
         return;
-      }
-      else{
-
-      
-      console.log("Fetching financial records for user:", user);
-      const response = await fetch(
-        `http://localhost:3001/financial-records/getallbyuserid/${user.id}`
-      );
-      if (response.ok) {
-        const data = await response.json();
-        console.log("Financial Records Fetched", data);
-        setRecords(data);
-      }
+      } else {
+        const response = await fetch(
+          `http://localhost:3001/financial-records/getallbyuserid/${user.id}`
+        );
+        if (response.ok) {
+          const data = await response.json();
+          console.log("Financial Records Fetched", data);
+          setRecords(data);
+        }
       }
     } catch (error) {
       console.error("Error fetching financial records:", error);
